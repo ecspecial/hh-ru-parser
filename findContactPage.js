@@ -11,11 +11,11 @@ const worksheet1 = workbook.Sheets[workbook.SheetNames[0]];
 
 async function search() {
     const browser = await puppeteer.launch({
-      headless: false // Launch in headless mode
+      //headless: false // Launch in headless mode
     });
     const page = await browser.newPage();
     
-    for (let i = 899; i < 1124; i++) {
+    for (let i = 1; i < lastRow; i++) {
       try {
         const url = worksheet1[`D${i}`].v.toString();
         const name = worksheet1[`A${i}`].v.toString();

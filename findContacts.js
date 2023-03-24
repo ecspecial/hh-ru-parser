@@ -13,7 +13,7 @@ async function search() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
   
-    for (let i = 799; i < 861; i++) {
+    for (let i = 1; i < lastRow; i++) {
       try {
         const url = worksheet1[`D${i}`].v.toString();
         const name = worksheet1[`A${i}`].v.toString();
@@ -97,7 +97,7 @@ async function search() {
     var newWorkbook = XLSX.utils.book_new();
     var newWorksheet = XLSX.utils.json_to_sheet(companies);
     XLSX.utils.book_append_sheet(newWorkbook, newWorksheet, "Companies");
-    XLSX.writeFile(newWorkbook, "готовый_без_телефона_8.xlsx");
+    XLSX.writeFile(newWorkbook, "готовый_без_телефона.xlsx");
 }
 async function main() {
     await search();

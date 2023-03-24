@@ -1,13 +1,7 @@
 const cheerio = require('cheerio');
 const XLSX = require('xlsx');
 
-// Used URLs
-// https://hh.ru/search/vacancy?no_magic=true&L_save_area=true&text=%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80&search_field=name&excluded_text=&salary=&currency_code=RUR&experience=doesNotMatter&label=not_from_agency&order_by=relevance&search_period=0&items_on_page=20
-// https://hh.ru/search/vacancy?search_field=name&enable_snippets=true&text=%D0%B7%D0%B0%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE+%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0&no_magic=true&L_save_area=true&items_on_page=20
-// https://hh.ru/search/vacancy?no_magic=true&L_save_area=true&text=%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80&search_field=name&excluded_text=&salary=&currency_code=RUR&experience=doesNotMatter&label=not_from_agency&order_by=relevance&search_period=0&items_on_page=20
-// https://hh.ru/search/vacancy?no_magic=true&L_save_area=true&text=%D0%97%D0%B0%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE+%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0&search_field=name&excluded_text=&salary=&currency_code=RUR&experience=doesNotMatter&order_by=relevance&search_period=0&items_on_page=20
-
-const url = 'https://hh.ru/search/vacancy?label=not_from_agency&search_field=description&enable_snippets=true&text=%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80+%D0%BF%D0%BE+%D0%A1%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D1%83&page=0&disableBrowserCache=true&items_on_page=20';
+const url = '';
 const companies = [];
 const companyNamesArray = [];
 const vacancyNamesArray = [];
@@ -133,7 +127,7 @@ async function fetchData(url) {
   async function fetchAllUrls(allPages) {
 
     // Get first data about companies
-    for (i = 75; i < 100; i++) {
+    for (i = 0; i < allPages; i++) {
         const pageUrl = (url + `&page=${i}`);
         console.log('Fetching page:', pageUrl);
 
@@ -361,7 +355,7 @@ async function fetchData(url) {
     for (var i = 0; i < XLSXcompanies.length; i++) {
         //XLSX.writeFile(workbook, "Запрос_Заместитель_Директора_По_Маркетингу.xlsx");
         //XLSX.writeFile(workbook, "Запрос_Технический_Директор.xlsx");
-        XLSX.writeFile(workbook, "Запрос_Директор_строй_4.xlsx");
+        XLSX.writeFile(workbook, "Запрос_Директор_17.xlsx");
         console.log(`Row ${i} has been added to xlsx.`);
     }
   }
